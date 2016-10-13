@@ -191,13 +191,20 @@
                                            Name="emailButton"
                                            Content="Contact me"
                                            Click="emailButton_Click"/>
-                                <TextBlock TextWrapping="WrapWholeWords"
+                            <TextBlock TextWrapping="WrapWholeWords"
                                            RelativePanel.Below="emailButton"
                                            Margin="10,10,0,0"
                                            FontSize="15"
-                                           Name="aboutTextBlock"
-                                           Text="The app is open source and you can find it on Github."/>
-                                <TextBlock Text="Version:"
+                                           Name="aboutTextBlock">
+                                <Span>
+                                    <Run Text="The app is open source and you can find it on ">
+                                        </Run>
+                                    <Hyperlink NavigateUri="https://github.com/pelopidass/TichuCounter">
+                                        Github.
+                                    </Hyperlink>
+                                </Span>
+                            </TextBlock>
+                            <TextBlock Text="Version:"
                                            FontSize="15"
                                            Name="versionTextBlock"
                                            RelativePanel.Below="aboutTextBlock"
@@ -246,7 +253,6 @@
                                                     VerticalAlignment="Center"/>
                                 </Button>
                                 <TextBlock RelativePanel.Below="facebookIcon"
-                                           RelativePanel.AlignHorizontalCenterWith="twitterIcon"
                                            Margin="10,20,0,0"
                                            FontSize="14"
                                            Name="specialThanksText"
