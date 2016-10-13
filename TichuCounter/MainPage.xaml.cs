@@ -1447,7 +1447,7 @@ namespace TichuCounter
         {
             await Launcher.LaunchUriAsync(new Uri("https://www.instagram.com/stavros_charlas/"));
         }
-
+        //Donate Button
         private async void donationButton_Click(object sender, RoutedEventArgs e)
         {
             string url = "";
