@@ -379,14 +379,19 @@
                                    Text="Choose your final score"
                                    FontSize="20"
                                    Name="finalScoreTextBlock"/>
-                                <TextBox Grid.Row="1" Grid.ColumnSpan="2"
-                                 InputScope="TelephoneNumber"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Name="finalScore"
-                                 PlaceholderText="500 or 1000"/>
 
-                                <Button Grid.Row="1" Grid.ColumnSpan="2"
+
+                            <StackPanel Grid.Row="1" Grid.ColumnSpan="2"
+                                        VerticalAlignment="Center" Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Margin="60,0,0,0">
+                                <RadioButton Content="1000"
+                                             Name="finalScoreA"/>
+                                <RadioButton Content="500"
+                                             Name="finalScoreB"/>
+
+                            </StackPanel>
+                            <Button Grid.Row="1" Grid.ColumnSpan="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Bottom"
                                 FontSize="20"

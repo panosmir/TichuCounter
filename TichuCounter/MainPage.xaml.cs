@@ -1162,7 +1162,7 @@ namespace TichuCounter
                     totalB.Text = Convert.ToString(counterB);
 
                     //let the user know that the game has finished
-                    if ((Convert.ToInt32(finalScore.Text) == 1000))
+                    if (finalScoreA.IsChecked == true)
                     {
                         if ((Convert.ToInt32(totalA.Text) >= 1000))
                         {
@@ -1187,7 +1187,7 @@ namespace TichuCounter
                             }
                         }
                     }
-                    else if (Convert.ToInt32(finalScore.Text) == 500)
+                    else if (finalScoreB.IsChecked == true)
                     {
                         if (Convert.ToInt32(totalA.Text) >= 500)
                         {
@@ -1369,7 +1369,7 @@ namespace TichuCounter
 
         private void tipsButton(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(finalScore.Text))
+            if (finalScoreA.IsChecked == true || finalScoreB.IsChecked == true)
             {
                 hintButton.Visibility = Visibility.Collapsed;
                 hintTextBlock.Visibility = Visibility.Collapsed;
@@ -1498,12 +1498,14 @@ namespace TichuCounter
                 Scores.Clear();
                 ResultListA.ItemsSource = Scores;
                 ResultListB.ItemsSource = Scores;
-                finalScore.Text = "";
                 teamAPointsTextBox.Text = "";
                 teamBPointsTextBox.Text = "";
+                finalScoreA.IsChecked = false;
+                finalScoreB.IsChecked = false;
 
                 finalScoreTextBlock.Visibility = Visibility.Visible;
-                finalScore.Visibility = Visibility.Visible;
+                finalScoreA.Visibility = Visibility.Visible;
+                finalScoreB.Visibility = Visibility.Visible;
                 playButton.Visibility = Visibility.Visible;
                 ResultListA.Visibility = Visibility.Collapsed;
                 ResultListB.Visibility = Visibility.Collapsed;
@@ -1520,6 +1522,8 @@ namespace TichuCounter
                 oneTwoB.Visibility = Visibility.Collapsed;
                 teamAPointsTextBox.Visibility = Visibility.Collapsed;
                 teamBPointsTextBox.Visibility = Visibility.Collapsed;
+
+                
             }
             else if (answer.Label == "No")
             {
@@ -1530,14 +1534,9 @@ namespace TichuCounter
         //LET THE GAME BEGINS! (button :P)
         private async void playGame(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(finalScore.Text))
+            if (finalScoreA.IsChecked == false && finalScoreB.IsChecked == false)
             {
                 var noScore = new Windows.UI.Popups.MessageDialog("You didn't set the final score.");
-                await noScore.ShowAsync();
-            }
-            else if (Convert.ToInt32(finalScore.Text) != 500 && Convert.ToInt32(finalScore.Text) != 1000)
-            {
-                var noScore = new Windows.UI.Popups.MessageDialog("You must choose 500 or 1000.");
                 await noScore.ShowAsync();
             }
             else
@@ -1561,8 +1560,9 @@ namespace TichuCounter
                 teamBPointsTextBox.Visibility = Visibility.Visible;
                 newGameButton.Visibility = Visibility.Visible;
                 finalScoreTextBlock.Visibility = Visibility.Collapsed;
-                finalScore.Visibility = Visibility.Collapsed;
                 playButton.Visibility = Visibility.Collapsed;
+                finalScoreA.Visibility = Visibility.Collapsed;
+                finalScoreB.Visibility = Visibility.Collapsed;
             }
         }
         //undo button because mistakes are part of our lifes
