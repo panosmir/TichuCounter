@@ -115,14 +115,12 @@ namespace TichuCounter
                     teamAPointsTextBox.Text = "";
                     teamBPointsTextBox.Text = "";
                 }
-                else if (oneTwoA.IsChecked == true && ((tichuMade2.IsChecked == true || GtichuMade2.IsChecked == true || oneTwoB.IsChecked == true)
-                    && (tichuMade.IsChecked == true || GtichuMade.IsChecked == true || oneTwoA.IsChecked == true)))
+                else if (oneTwoA.IsChecked == true && (tichuMade2.IsChecked == true || GtichuMade2.IsChecked == true || oneTwoB.IsChecked == true) || 
+                    (tichuMade.IsChecked == true && GtichuMade.IsChecked == true) || (tichuLost.IsChecked == true && GtichuLost.IsChecked == true))
                 {
                     var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                     await wrongChecks.ShowAsync();
                     hasPoints = false;
-                    counterA = 0;
-                    counterB = 0;
                     tichuMade.IsChecked = false;
                     tichuLost.IsChecked = false;
                     GtichuMade.IsChecked = false;
@@ -136,14 +134,31 @@ namespace TichuCounter
                     teamAPointsTextBox.Text = "";
                     teamBPointsTextBox.Text = "";
                 }
-                else if (oneTwoB.IsChecked == true && (tichuMade.IsChecked == true || GtichuMade.IsChecked == true || oneTwoA.IsChecked == true)
-                    && (tichuMade2.IsChecked == true || GtichuMade2.IsChecked == true || oneTwoB.IsChecked == true))
+                else if (oneTwoB.IsChecked == true && (tichuMade.IsChecked == true || GtichuMade.IsChecked == true || oneTwoA.IsChecked == true) ||
+                    (tichuMade2.IsChecked == true && GtichuMade2.IsChecked == true) || (tichuLost2.IsChecked == true && GtichuLost2.IsChecked == true))
                 {
                     var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                     await wrongChecks.ShowAsync();
                     hasPoints = false;
-                    counterA -= scoreA;
-                    counterB -= scoreB;
+                    tichuMade.IsChecked = false;
+                    tichuLost.IsChecked = false;
+                    GtichuMade.IsChecked = false;
+                    GtichuLost.IsChecked = false;
+                    tichuMade2.IsChecked = false;
+                    tichuLost2.IsChecked = false;
+                    GtichuMade2.IsChecked = false;
+                    GtichuLost2.IsChecked = false;
+                    oneTwoA.IsChecked = false;
+                    oneTwoB.IsChecked = false;
+                    teamAPointsTextBox.Text = "";
+                    teamBPointsTextBox.Text = "";
+                }
+                else if ((oneTwoA.IsChecked == false && oneTwoB.IsChecked == false) && (tichuMade.IsChecked == true || tichuLost.IsChecked == true || GtichuMade.IsChecked == true || GtichuLost.IsChecked == true
+                    || tichuMade2.IsChecked == true || tichuLost2.IsChecked == true || GtichuMade2.IsChecked == true || GtichuLost2.IsChecked == true))
+                {
+                    var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
+                    await wrongChecks.ShowAsync();
+                    hasPoints = false;
                     tichuMade.IsChecked = false;
                     tichuLost.IsChecked = false;
                     GtichuMade.IsChecked = false;
@@ -962,6 +977,14 @@ namespace TichuCounter
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else if (tichuMade2.IsChecked == true && (tichuLost2.IsChecked == true || GtichuMade2.IsChecked == true || GtichuLost2.IsChecked == true
                             || oneTwoA.IsChecked == true || oneTwoB.IsChecked == true || tichuMade.IsChecked == true || GtichuMade.IsChecked == true || oneTwoA.IsChecked == true))
@@ -969,12 +992,28 @@ namespace TichuCounter
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else if (oneTwoA.IsChecked == true || oneTwoB.IsChecked == true)
                         {
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else
                         {
@@ -1008,6 +1047,14 @@ namespace TichuCounter
                         teamAPointsTextBox.Text = "";
                         teamBPointsTextBox.Text = "";
                         hasPoints = false;
+                        tichuMade.IsChecked = false;
+                        tichuLost.IsChecked = false;
+                        GtichuMade.IsChecked = false;
+                        GtichuLost.IsChecked = false;
+                        tichuMade2.IsChecked = false;
+                        tichuLost2.IsChecked = false;
+                        GtichuMade2.IsChecked = false;
+                        GtichuLost2.IsChecked = false;
                     }
                 }
                 else if ((scoreA < 0 && scoreA >= -25) && (scoreB > 100 && scoreB <= 125) && scoreA % 5 == 0 && scoreB % 5 == 0)
@@ -1020,6 +1067,14 @@ namespace TichuCounter
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else if (tichuMade2.IsChecked == true && (tichuLost2.IsChecked == true || GtichuMade2.IsChecked == true || GtichuLost2.IsChecked == true
                             || oneTwoA.IsChecked == true || oneTwoB.IsChecked == true || tichuMade.IsChecked == true || GtichuMade.IsChecked == true || oneTwoA.IsChecked == true))
@@ -1027,12 +1082,28 @@ namespace TichuCounter
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else if (oneTwoA.IsChecked == true || oneTwoB.IsChecked == true)
                         {
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else
                         {
@@ -1066,6 +1137,14 @@ namespace TichuCounter
                         teamAPointsTextBox.Text = "";
                         teamBPointsTextBox.Text = "";
                         hasPoints = false;
+                        tichuMade.IsChecked = false;
+                        tichuLost.IsChecked = false;
+                        GtichuMade.IsChecked = false;
+                        GtichuLost.IsChecked = false;
+                        tichuMade2.IsChecked = false;
+                        tichuLost2.IsChecked = false;
+                        GtichuMade2.IsChecked = false;
+                        GtichuLost2.IsChecked = false;
                     }
                 }
                 else if ((scoreA >100 && scoreA <= 125) && (scoreB < 0 && scoreB >= -25) && scoreA % 5 == 0 && scoreB % 5 == 0)
@@ -1078,6 +1157,14 @@ namespace TichuCounter
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else if (tichuMade2.IsChecked == true && (tichuLost2.IsChecked == true || GtichuMade2.IsChecked == true || GtichuLost2.IsChecked == true
                             || oneTwoA.IsChecked == true || oneTwoB.IsChecked == true || tichuMade.IsChecked == true || GtichuMade.IsChecked == true || oneTwoA.IsChecked == true))
@@ -1085,12 +1172,28 @@ namespace TichuCounter
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else if (oneTwoA.IsChecked == true || oneTwoB.IsChecked == true)
                         {
                             var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                             await wrongChecks.ShowAsync();
                             hasPoints = false;
+                            tichuMade.IsChecked = false;
+                            tichuLost.IsChecked = false;
+                            GtichuMade.IsChecked = false;
+                            GtichuLost.IsChecked = false;
+                            tichuMade2.IsChecked = false;
+                            tichuLost2.IsChecked = false;
+                            GtichuMade2.IsChecked = false;
+                            GtichuLost2.IsChecked = false;
                         }
                         else
                         {
@@ -1124,6 +1227,14 @@ namespace TichuCounter
                         teamAPointsTextBox.Text = "";
                         teamBPointsTextBox.Text = "";
                         hasPoints = false;
+                        tichuMade.IsChecked = false;
+                        tichuLost.IsChecked = false;
+                        GtichuMade.IsChecked = false;
+                        GtichuLost.IsChecked = false;
+                        tichuMade2.IsChecked = false;
+                        tichuLost2.IsChecked = false;
+                        GtichuMade2.IsChecked = false;
+                        GtichuLost2.IsChecked = false;
                     }
                 }
                 else
@@ -1133,6 +1244,14 @@ namespace TichuCounter
                     teamAPointsTextBox.Text = "";
                     teamBPointsTextBox.Text = "";
                     hasPoints = false;
+                    tichuMade.IsChecked = false;
+                    tichuLost.IsChecked = false;
+                    GtichuMade.IsChecked = false;
+                    GtichuLost.IsChecked = false;
+                    tichuMade2.IsChecked = false;
+                    tichuLost2.IsChecked = false;
+                    GtichuMade2.IsChecked = false;
+                    GtichuLost2.IsChecked = false;
                 }
             }
             //now we use the flag to note the points of every round

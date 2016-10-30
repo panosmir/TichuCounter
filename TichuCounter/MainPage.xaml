@@ -385,9 +385,9 @@
                                         VerticalAlignment="Center" Orientation="Horizontal"
                                         HorizontalAlignment="Center"
                                         Margin="60,0,0,0">
-                                <RadioButton Content="1000"
-                                             Name="finalScoreA"/>
                                 <RadioButton Content="500"
+                                             Name="finalScoreA"/>
+                                <RadioButton Content="1000"
                                              Name="finalScoreB"/>
 
                             </StackPanel>
