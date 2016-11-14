@@ -9,29 +9,6 @@
     xmlns:fa="using:FontAwesome.UWP"
     mc:Ignorable="d">
 
-    
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="MySplitView.Background"
-                                    Value="Assets/background_tichu.png"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1007"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="MySplitView.Background"
-                                    Value="Black"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
         <Grid>
             <Grid.Background>
                 <ImageBrush ImageSource="Assets/background_tichu.png"/>
@@ -386,9 +363,9 @@
                                         HorizontalAlignment="Center"
                                         Margin="60,0,0,0">
                                 <RadioButton Content="500"
-                                             Name="finalScoreA"/>
-                                <RadioButton Content="1000"
                                              Name="finalScoreB"/>
+                                <RadioButton Content="1000"
+                                             Name="finalScoreA"/>
 
                             </StackPanel>
                             <Button Grid.Row="1" Grid.ColumnSpan="2"
@@ -442,18 +419,26 @@
                                 PlaceholderText="Points"/>
 
                                 <StackPanel Grid.Row="3">
-                                    <CheckBox x:Name="tichuMade" Content="Tichu Made" Margin="5,0,0,0"/>
-                                    <CheckBox x:Name="tichuLost" Content="Tichu Lost" Margin="5,0,0,0"/>
+                                    <CheckBox x:Name="tichuMade" Content="Tichu Made" Margin="5,0,0,0"
+                                              Checked="tichuMadeChecked"/>
+                                    <CheckBox x:Name="tichuLost" Content="Tichu Lost" Margin="5,0,0,0"
+                                              Checked="tichuLostChecked"/>
                                     <CheckBox x:Name="oneTwoA" Content="1-2" Margin="5,0,0,0"/>
-                                    <CheckBox x:Name="GtichuMade" Content="Grand Tichu Made" Margin="5,0,0,0"/>
-                                    <CheckBox x:Name="GtichuLost" Content="Grand Tichu Lost" Margin="5,0,0,0"/>
+                                    <CheckBox x:Name="GtichuMade" Content="Grand Tichu Made" Margin="5,0,0,0"
+                                              Checked="gTichuMadeChecked"/>
+                                    <CheckBox x:Name="GtichuLost" Content="Grand Tichu Lost" Margin="5,0,0,0"
+                                              Checked="gTichuLostChecked"/>
                                 </StackPanel>
                                 <StackPanel Grid.Row="3" Grid.Column="2">
-                                    <CheckBox x:Name="tichuMade2" Content="Tichu Made"/>
-                                    <CheckBox x:Name="tichuLost2" Content="Tichu Lost"/>
+                                    <CheckBox x:Name="tichuMade2" Content="Tichu Made"
+                                              Checked="tichuMade2Checked"/>
+                                    <CheckBox x:Name="tichuLost2" Content="Tichu Lost"
+                                              Checked="tichuLost2Checked"/>
                                     <CheckBox x:Name="oneTwoB" Content="1-2"/>
-                                    <CheckBox x:Name="GtichuMade2" Content="Grand Tichu Made"/>
-                                    <CheckBox x:Name="GtichuLost2" Content="Grand Tichu Lost"/>
+                                    <CheckBox x:Name="GtichuMade2" Content="Grand Tichu Made"
+                                              Checked="gTichuMade2Checked"/>
+                                    <CheckBox x:Name="GtichuLost2" Content="Grand Tichu Lost"
+                                              Checked="gTichuLost2Checked"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="5" Grid.ColumnSpan="2" 
@@ -495,7 +480,30 @@
                 </SplitView.Content>
             </SplitView>
 
-        </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.Background"
+                                    Value="Assets/background_tichu.png"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1007"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.Background"
+                                    Value="Black"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </Grid>
 
 
 </Page>

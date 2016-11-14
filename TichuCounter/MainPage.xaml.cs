@@ -116,7 +116,9 @@ namespace TichuCounter
                     teamBPointsTextBox.Text = "";
                 }
                 else if (oneTwoA.IsChecked == true && (tichuMade2.IsChecked == true || GtichuMade2.IsChecked == true || oneTwoB.IsChecked == true) || 
-                    (tichuMade.IsChecked == true && GtichuMade.IsChecked == true) || (tichuLost.IsChecked == true && GtichuLost.IsChecked == true))
+                    (tichuMade.IsChecked == true && (tichuLost.IsChecked == true || GtichuLost.IsChecked == true)) || 
+                    (tichuLost.IsChecked == true && (tichuLost2.IsChecked == true || GtichuLost2.IsChecked == true)) ||
+                    GtichuLost.IsChecked == true && GtichuLost2.IsChecked == true)
                 {
                     var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                     await wrongChecks.ShowAsync();
@@ -135,7 +137,9 @@ namespace TichuCounter
                     teamBPointsTextBox.Text = "";
                 }
                 else if (oneTwoB.IsChecked == true && (tichuMade.IsChecked == true || GtichuMade.IsChecked == true || oneTwoA.IsChecked == true) ||
-                    (tichuMade2.IsChecked == true && GtichuMade2.IsChecked == true) || (tichuLost2.IsChecked == true && GtichuLost2.IsChecked == true))
+                    (tichuMade2.IsChecked == true && (tichuLost2.IsChecked == true || GtichuLost2.IsChecked == true)) ||
+                    (tichuLost2.IsChecked == true && (tichuLost.IsChecked == true || GtichuLost.IsChecked == true)) ||
+                    GtichuLost2.IsChecked == true && GtichuLost.IsChecked == true)
                 {
                     var wrongChecks = new Windows.UI.Popups.MessageDialog("Something is wrong with your checks!");
                     await wrongChecks.ShowAsync();
@@ -1586,6 +1590,62 @@ namespace TichuCounter
 
             await Launcher.LaunchUriAsync(new Uri(url));
 
+        }
+
+        private void tichuMadeChecked(object sender, RoutedEventArgs e)
+        {
+            tichuLost.IsChecked = false;
+            GtichuLost.IsChecked = false;
+            GtichuMade.IsChecked = false;
+        }
+
+        private void tichuLostChecked(object sender, RoutedEventArgs e)
+        {
+            tichuMade.IsChecked = false;
+            GtichuMade.IsChecked = false;
+            GtichuLost.IsChecked = false;
+        }
+
+        private void gTichuMadeChecked(object sender, RoutedEventArgs e)
+        {
+            tichuMade.IsChecked = false;
+            tichuLost.IsChecked = false;
+            GtichuLost.IsChecked = false;
+        }
+
+        private void gTichuLostChecked(object sender, RoutedEventArgs e)
+        {
+            tichuMade.IsChecked = false;
+            GtichuMade.IsChecked = false;
+            tichuLost.IsChecked = false;
+        }
+
+        private void gTichuLost2Checked(object sender, RoutedEventArgs e)
+        {
+            tichuMade2.IsChecked = false;
+            GtichuMade2.IsChecked = false;
+            tichuLost2.IsChecked = false;
+        }
+
+        private void gTichuMade2Checked(object sender, RoutedEventArgs e)
+        {
+            tichuMade2.IsChecked = false;
+            tichuLost2.IsChecked = false;
+            GtichuLost2.IsChecked = false;
+        }
+
+        private void tichuLost2Checked(object sender, RoutedEventArgs e)
+        {
+            tichuMade2.IsChecked = false;
+            GtichuMade2.IsChecked = false;
+            GtichuLost2.IsChecked = false;
+        }
+
+        private void tichuMade2Checked(object sender, RoutedEventArgs e)
+        {
+            tichuLost2.IsChecked = false;
+            GtichuLost2.IsChecked = false;
+            GtichuMade2.IsChecked = false;
         }
 
 
